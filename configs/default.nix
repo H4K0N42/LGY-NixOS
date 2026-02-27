@@ -120,7 +120,7 @@
       Type = "oneshot";
       RemainAfterExit = true;
       ExecStart = "${pkgs.coreutils}/bin/true";
-      ExecStop = "/etc/nixos/git-config/configs/scripts/shutdown/shutdown.sh";
+      ExecStop = "${pkgs.bash}/bin/bash /etc/nixos/git-config/configs/scripts/shutdown/shutdown.sh";
       TimeoutStopSec = "infinity";
     };
   };
