@@ -12,7 +12,7 @@
     let
       system = "x86_64-linux";
 
-      hostname = nixpkgs.lib.trim (builtins.readFile /etc/hostname);
+      hostname = nixpkgs.lib.trim (builtins.readFile ../hostname);
 
       segmentModules = {
         "PC" = [ ./git-config/configs/modules/pc.nix ];
