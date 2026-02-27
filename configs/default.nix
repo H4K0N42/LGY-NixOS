@@ -104,10 +104,9 @@
 
   systemd.services.H4boot-script = {
     description = "Non-blocking startup service";
-    after = [
+    requires = [
       "network-online.target"
     ];
-    before = [ "display-manager.service" ]; # order before login
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
