@@ -1,10 +1,31 @@
 { pkgs, hostname, ... }:
 {
+  # https://search.nixos.org/packages
   environment.systemPackages = with pkgs; [
     git
-    vscodium-fhs
     ghostty
   ];
+
+  # https://search.nixos.org/options?query=programs.
+  programs = {
+    chromium = {
+      enable = true;
+      homepageLocation = "https://www.leibnizgymnasium.de/";
+      extraOpts = {
+        "BrowserSignin" = 0;
+        "SyncDisabled" = true;
+        "PasswordManagerEnabled" = false;
+        "SpellcheckEnabled" = true;
+        "SpellcheckLanguage" = [
+          "de"
+        ];
+      };
+      extensions = [
+        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+      ];
+    };
+    firefox.enable = true;
+  };
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
