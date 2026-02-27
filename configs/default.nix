@@ -4,6 +4,8 @@
   environment.systemPackages = with pkgs; [
     git
     ghostty
+    chromium
+    brave
   ];
 
   # https://search.nixos.org/options?query=programs.
