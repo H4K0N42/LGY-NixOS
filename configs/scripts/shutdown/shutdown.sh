@@ -19,8 +19,8 @@ run_variant() {
 
 # ── main ───────────────────────────────────────────────────────────────────────
 
-HOSTNAME="${1:-$(hostname)}"          # accept an optional override as $1
-HOSTNAME_LOWER="${HOSTNAME,,}"        # lowercase for case-insensitive matching
+HOSTNAME="${1:-$(cat /etc/hostname)}"   # use argument $1 or fallback to /etc/hostname
+HOSTNAME_LOWER="${HOSTNAME,,}"           # lowercase for case-insensitive matching
 
 log "Hostname : $HOSTNAME"
 log "Variants : $VARIANTS_DIR"
