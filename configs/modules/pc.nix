@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 {
   users = {
     users.schule = {
@@ -8,7 +8,7 @@
     };
   };
 
-  interfaces.enp1s0.wakeOnLan.enable = true;
+  # interfaces.enp1s0.wakeOnLan.enable = true;
 
   services = {
     displayManager = {
