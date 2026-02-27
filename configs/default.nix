@@ -103,11 +103,8 @@
   # };
 
   services.cron.enable = true;
-
-  services.cron.userJobs = {
-    root = [
-      "@reboot bash /etc/nixos/git-config/configs/scripts/boot/boot.sh"
-    ];
-  };
+  services.cron.systemCronJobs = [
+    "@reboot bash /etc/nixos/git-config/configs/scripts/boot/boot.sh"
+  ];
 
 }
