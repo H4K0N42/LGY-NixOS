@@ -110,7 +110,7 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "/run/current-system/sw/bin/bash /etc/nixos/git-config/configs/scripts/shutdown/shutdown.sh";
+      ExecStart = "/run/current-system/sw/bin/bash /etc/nixos/git-config/configs/scripts/boot/boot.sh";
       RemainAfterExit = true;
     };
     startLimitIntervalSec = 0;
