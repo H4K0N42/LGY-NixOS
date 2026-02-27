@@ -12,7 +12,7 @@
     let
       system = "x86_64-linux";
 
-      hostname = builtins.getEnv "HOSTNAME";
+      hostname = builtins.readFile ./hostname;
 
       segmentModules = {
         "PC" = [ ./git-config/configs/modules/pc.nix ];
