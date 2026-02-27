@@ -11,7 +11,7 @@ fi
 rm -rf $TARGET_DIR
 git clone --depth 1 $REPO_URL $TARGET_DIR
 
-ln -sf "$TARGET_DIR/flake.nix" "/etc/nixos/flake.nix"
+cp -f "$TARGET_DIR/flake.nix" "/etc/nixos/flake.nix"
 rm -f /etc/nixos/flake.lock
 
 nixos-rebuild boot
