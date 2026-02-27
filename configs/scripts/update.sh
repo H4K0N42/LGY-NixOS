@@ -3,6 +3,7 @@
 REPO_URL="https://github.com/H4K0N42/LGY-NixOS"
 TARGET_DIR="/etc/nixos/git-config"
 
+cd /tmp/
 rm -rf $TARGET_DIR
 git clone --depth 1 $REPO_URL $TARGET_DIR
 

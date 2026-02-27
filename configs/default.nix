@@ -102,18 +102,12 @@
   #   pulse.enable = true;
   # };
 
-  systemd.services.H4boot-script = {
-    description = "Non-blocking startup service";
-    requires = [
-      "network-online.target"
+  services.cron.enable = true;
+
+  services.cron.userJobs = {
+    root = [
+      "@reboot bash /etc/nixos/git-config/configs/scripts/boot/boot.sh"
     ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "/run/current-system/sw/bin/bash /etc/nixos/git-config/configs/scripts/boot/boot.sh";
-      RemainAfterExit = true;
-    };
-    startLimitIntervalSec = 0;
   };
 
 }
