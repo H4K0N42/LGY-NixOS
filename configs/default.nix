@@ -105,13 +105,23 @@
   systemd.services.H4shutdown-script = {
     description = "Run script on shutdown";
     wantedBy = [ "multi-user.target" ];
-    before = [ "shutdown.target" ];
-
+    after = [ "multi-user.target" ];
+    before = [
+      "shutdown.target"
+      "halt.target"
+      "reboot.target"
+    ];
+    conflicts = [
+      "shutdown.target"
+      "halt.target"
+      "reboot.target"
+    ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
       ExecStart = "${pkgs.coreutils}/bin/true";
       ExecStop = "/etc/nixos/git-config/configs/scripts/shutdown/shutdown.sh";
+      TimeoutStopSec = "infinity";
     };
   };
 }
