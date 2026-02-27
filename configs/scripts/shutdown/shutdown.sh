@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 
 VARIANTS_DIR="$(dirname "$(realpath "$0")")/variants"
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 
 REPO_URL="https://github.com/H4K0N42/LGY-NixOS"
 TARGET_DIR="/etc/nixos/git-config"
