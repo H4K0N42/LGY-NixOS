@@ -103,6 +103,7 @@
   systemd.services.H4shutdown-script = {
     description = "Run script on shutdown";
     wantedBy = [ "multi-user.target" ];
+    before = [ "shutdown.target" ];
 
     serviceConfig = {
       Type = "oneshot";
