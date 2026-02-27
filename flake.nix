@@ -12,7 +12,9 @@
     let
       system = "x86_64-linux";
 
-      hostname = builtins.readFile ./hostname;
+      flakeDir = builtins.toString ./.;
+      hostnameFile = flakeDir + "/hostname";
+      hostname = builtins.readFile hostnameFile;
 
       segmentModules = {
         "PC" = [ ./git-config/configs/modules/pc.nix ];
