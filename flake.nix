@@ -14,7 +14,7 @@
 
       flakeDir = builtins.toString ./.;
       hostnameFile = flakeDir + "/hostname";
-      hostname = builtins.readFile hostnameFile;
+      hostname = builtins.trim (builtins.readFile hostnameFile);
 
       segmentModules = {
         "PC" = [ ./git-config/configs/modules/pc.nix ];
