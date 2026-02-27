@@ -1,5 +1,11 @@
-{ hostname, ... }:
+{ pkgs, hostname, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    git
+    vscodium-fhs
+    ghostty
+  ];
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     timeout = 1;

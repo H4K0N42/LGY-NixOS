@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+shopt -s extglob # Match !(...)
+
 cd /home/schule/ && rm -rf !(Documents)
 cp -r /etc/nixos/git-config/dotfiles/pc/config/ /home/schule/.config/
 
