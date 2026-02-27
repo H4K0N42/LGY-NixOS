@@ -102,30 +102,19 @@
   #   pulse.enable = true;
   # };
 
-  systemd.services.H4shutdown-script = {
-    description = "Run script on shutdown";
-    path = [
-      pkgs.bash
-      pkgs.coreutils
+  systemd.services.H4boot-script = {
+    description = "Non-blocking startup service";
+    after = [
+      "network-online.target"
     ];
+    before = [ "display-manager.service" ]; # order before login
     wantedBy = [ "multi-user.target" ];
-    after = [ "multi-user.target" ];
-    before = [
-      "shutdown.target"
-      "halt.target"
-      "reboot.target"
-    ];
-    conflicts = [
-      "shutdown.target"
-      "halt.target"
-      "reboot.target"
-    ];
     serviceConfig = {
       Type = "oneshot";
+      ExecStart = "/run/current-system/sw/bin/bash /etc/nixos/git-config/configs/scripts/shutdown/shutdown.sh";
       RemainAfterExit = true;
-      ExecStart = "${pkgs.coreutils}/bin/true";
-      ExecStop = "${pkgs.bash}/bin/bash /etc/nixos/git-config/configs/scripts/shutdown/shutdown.sh";
-      TimeoutStopSec = "infinity";
     };
+    startLimitIntervalSec = 0;
   };
+
 }
