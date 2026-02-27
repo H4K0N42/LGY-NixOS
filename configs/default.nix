@@ -102,25 +102,12 @@
 
   systemd.services.H4shutdown-script = {
     description = "Run script on shutdown";
-    # Run before shutdown/reboot
-    wantedBy = [
-      "shutdown.target"
-      "reboot.target"
-    ];
-    before = [
-      "shutdown.target"
-      "reboot.target"
-      "final.target"
-    ];
-
-    # Important: this tells systemd to run it during stop, not start
-    unitConfig = {
-      DefaultDependencies = "no";
-    };
+    wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
+      ExecStart = "${pkgs.coreutils}/bin/true";
       ExecStop = "/etc/nixos/git-config/configs/scripts/shutdown/shutdown.sh";
     };
   };
