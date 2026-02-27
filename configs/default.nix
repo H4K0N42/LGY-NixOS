@@ -1,4 +1,4 @@
-{ ... }:
+{ hostname, ... }:
 {
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -12,6 +12,7 @@
     };
   };
 
+  networking.hostName = hostname;
   nixpkgs.config = {
     allowUnfree = true;
   };

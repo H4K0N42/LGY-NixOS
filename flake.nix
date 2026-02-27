@@ -40,7 +40,7 @@
     {
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs hostname; };
         modules = [
           ./configuration.nix
           ./git-config/configs/default.nix
