@@ -1,0 +1,6 @@
+background-opacity = 0.75
+cursor-style = block_hollow
+shell-integration-features = no-cursor, title
+background = #000000
+font-family = JetBrainsMono NFM
+font-feature = -calt
