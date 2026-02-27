@@ -104,6 +104,10 @@
 
   systemd.services.H4shutdown-script = {
     description = "Run script on shutdown";
+    path = [
+      pkgs.bash
+      pkgs.coreutils
+    ];
     wantedBy = [ "multi-user.target" ];
     after = [ "multi-user.target" ];
     before = [
