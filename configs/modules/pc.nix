@@ -29,5 +29,6 @@
 
   environment.systemPackages = with pkgs; [
     vscodium-fhs
+    python3Full
   ];
 }
