@@ -112,22 +112,10 @@
     "@reboot root bash /etc/nixos/git-config/configs/scripts/boot/boot.sh"
   ];
 
-  systemd.services.nixos-rebuild-on-shutdown = {
-    description = "Run nixos-rebuild boot on shutdown";
+  systemd.services.nixos-rebuild-on-boot = {
+    description = "Run nixos-rebuild";
 
-    wantedBy = [
-      "shutdown.target"
-      "reboot.target"
-      "halt.target"
-      "poweroff.target"
-    ];
-
-    before = [
-      "shutdown.target"
-      "reboot.target"
-      "halt.target"
-      "poweroff.target"
-    ];
+    wantedBy = [ "multi-user.target" ];
 
     after = [
       "network.target"
@@ -137,7 +125,7 @@
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.nixos-rebuild}/bin/nixos-rebuild boot";
-      TimeoutStopSec = "infinity";
+      TimeoutStartSec = "infinity";
     };
   };
 
