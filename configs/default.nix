@@ -114,7 +114,8 @@
 
   systemd.services.H4Update = {
     description = "Update NixOS";
-    after = [ "network.target" ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     path = [ pkgs.git ];
     serviceConfig = {
