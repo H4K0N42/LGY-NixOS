@@ -1,5 +1,7 @@
 #!/run/current-system/sw/bin/bash
 
+sleep 15 # Race condition, will work most of the time
+
 TARGET_DIR="/etc/nixos/git-config"
 
 cd $TARGET_DIR
