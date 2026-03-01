@@ -113,7 +113,7 @@
   ];
 
   systemd.services.H4Update = {
-    description = "Update Git config and rebuild NixOS at startup";
+    description = "Update NixOS";
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
     path = [ pkgs.git ];

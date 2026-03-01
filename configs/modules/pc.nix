@@ -30,5 +30,7 @@
   environment.systemPackages = with pkgs; [
     vscodium-fhs
     python3
+    thonny
+    tigerjython
   ];
 }
