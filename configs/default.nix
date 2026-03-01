@@ -115,16 +115,15 @@
   systemd.services.nixos-rebuild-on-shutdown = {
     description = "Run nixos-rebuild boot on shutdown";
 
-    wantedBy = [ "multi-user.target" ];
-
-    before = [
+    wantedBy = [
       "shutdown.target"
       "reboot.target"
       "halt.target"
       "poweroff.target"
     ];
 
-    conflicts = [
+    before = [
+      "shutdown.target"
       "reboot.target"
       "halt.target"
       "poweroff.target"
@@ -137,9 +136,7 @@
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.coreutils}/bin/true";
-      ExecStop = "${pkgs.nixos-rebuild}/bin/nixos-rebuild boot";
-      RemainAfterExit = true;
+      ExecStart = "${pkgs.nixos-rebuild}/bin/nixos-rebuild boot";
       TimeoutStopSec = "infinity";
     };
   };
