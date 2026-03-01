@@ -1,9 +1,6 @@
 #!/run/current-system/sw/bin/bash
 
-until host github.com &>/dev/null; do
-  echo "Waiting for DNS..."
-  sleep 2
-done
+sleep 30
 
 TARGET_DIR="/etc/nixos/git-config"
 
