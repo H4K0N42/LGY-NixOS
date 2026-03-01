@@ -38,3 +38,7 @@ fi
 
 cd /etc/nixos
 nixos-rebuild boot --flake .#"$NEW_HOSTNAME"
+
+read
+
+reboot
