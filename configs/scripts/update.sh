@@ -1,6 +1,9 @@
 #!/run/current-system/sw/bin/bash
 
-sleep 15 # Race condition, will work most of the time
+until host github.com &>/dev/null; do
+  echo "Waiting for DNS..."
+  sleep 2
+done
 
 TARGET_DIR="/etc/nixos/git-config"
 
