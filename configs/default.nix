@@ -124,7 +124,7 @@
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.nixos-rebuild}/bin/nixos-rebuild boot";
+      ExecStart = "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch";
       TimeoutStartSec = "infinity";
     };
   };
