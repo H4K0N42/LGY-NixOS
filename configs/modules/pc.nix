@@ -32,5 +32,6 @@
     python3
     thonny
     tigerjython
+    arduino-ide
   ];
 }
