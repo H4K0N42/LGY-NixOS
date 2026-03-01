@@ -1,4 +1,9 @@
-{ pkgs, hostname, ... }:
+{
+  config,
+  pkgs,
+  hostname,
+  ...
+}:
 {
   # https://search.nixos.org/packages
   environment.systemPackages = with pkgs; [
@@ -106,5 +111,37 @@
   services.cron.systemCronJobs = [
     "@reboot root bash /etc/nixos/git-config/configs/scripts/boot/boot.sh"
   ];
+
+  systemd.services.nixos-rebuild-on-shutdown = {
+    description = "Run nixos-rebuild boot on shutdown";
+
+    wantedBy = [ "multi-user.target" ];
+
+    before = [
+      "shutdown.target"
+      "reboot.target"
+      "halt.target"
+      "poweroff.target"
+    ];
+
+    conflicts = [
+      "reboot.target"
+      "halt.target"
+      "poweroff.target"
+    ];
+
+    after = [
+      "network.target"
+      "local-fs.target"
+    ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.coreutils}/bin/true";
+      ExecStop = "${pkgs.nixos-rebuild}/bin/nixos-rebuild boot";
+      RemainAfterExit = true;
+      TimeoutStopSec = "infinity";
+    };
+  };
 
 }
