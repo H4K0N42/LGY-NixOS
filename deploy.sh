@@ -37,7 +37,7 @@ EOF
 fi
 
 cd /etc/nixos
-nixos-rebuild boot --flake .#"$NEW_HOSTNAME"
+nixos-rebuild boot --install-bootloader --flake .#"$NEW_HOSTNAME"
 
 read
 
