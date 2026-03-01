@@ -116,6 +116,7 @@
     description = "Update Git config at startup";
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.git ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "/etc/nixos/git-config/configs/scripts/update.sh";
