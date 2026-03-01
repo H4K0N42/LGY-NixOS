@@ -112,6 +112,19 @@
     "@reboot root bash /etc/nixos/git-config/configs/scripts/boot/boot.sh"
   ];
 
+  systemd.services.git-update-on-boot = {
+    description = "Update Git config at startup";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/etc/nixos/git-config/configs/scripts/update.sh";
+      WorkingDirectory = "/etc/nixos/git-config";
+      User = "root";
+      RemainAfterExit = true;
+    };
+  };
+
   systemd.services.nixos-rebuild-on-boot = {
     description = "Run nixos-rebuild";
 
@@ -120,7 +133,10 @@
     after = [
       "network.target"
       "local-fs.target"
+      "git-update.service"
     ];
+
+    requires = [ "git-update.service" ];
 
     serviceConfig = {
       Type = "oneshot";
