@@ -33,5 +33,6 @@
     thonny
     tigerjython
     arduino-ide
+    sqlitebrowser
   ];
 }
