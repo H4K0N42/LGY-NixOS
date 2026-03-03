@@ -1,0 +1,2 @@
+[Containments][2][Applets][5][Configuration][General]
+launchers=preferred://filemanager,file:///nix/store/k1kgryabaqxhzi5ch1hswivhvx5didrr-system-path/share/applications/chromium-browser.desktop,file:///nix/store/k1kgryabaqxhzi5ch1hswivhvx5didrr-system-path/share/applications/firefox.desktop,file:///nix/store/k1kgryabaqxhzi5ch1hswivhvx5didrr-system-path/share/applications/onlyoffice-desktopeditors.desktop,file:///nix/store/k1kgryabaqxhzi5ch1hswivhvx5didrr-system-path/share/applications/codium.desktop
