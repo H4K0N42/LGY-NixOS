@@ -106,10 +106,10 @@
   #   pulse.enable = true;
   # };
 
-  services.cron.enable = true;
-  services.cron.systemCronJobs = [
-    "@reboot root bash /etc/nixos/git-config/configs/scripts/boot/boot.sh"
-  ];
+  # services.cron.enable = true;
+  # services.cron.systemCronJobs = [
+  #   "@reboot root bash /etc/nixos/git-config/configs/scripts/boot/boot.sh"
+  # ];
 
   systemd.services.H4Update = {
     description = "Update NixOS";
@@ -124,6 +124,23 @@
       WorkingDirectory = "/etc/nixos/git-config";
       User = "root";
       RemainAfterExit = true;
+    };
+  };
+
+  systemd.services.H4BootScript = {
+    description = "Startup Script";
+    before = [ "display-manager.service" ];
+    wantedBy = [ "multi-user.target" ];
+
+    path = with pkgs; [
+      rsync
+      coreutils
+      bash
+    ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/etc/nixos/git-config/configs/scripts/boot/boot.sh";
     };
   };
 }
