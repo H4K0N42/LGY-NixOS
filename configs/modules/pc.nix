@@ -28,11 +28,23 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vscodium-fhs
-    python3
-    thonny
-    tigerjython
+    libreoffice
+    onlyoffice-desktopeditors
     arduino-ide
     sqlitebrowser
+    thonny
+    tigerjython
+    python3
+    vscodium-fhs
+    filius
+    logisim
+    openjdk
+    notepad-next
+    tipp10
+    cura
+    vlc
+    gimp-with-plugins
+    musescore
+    geogebra
   ];
 }

@@ -10,7 +10,6 @@
     git
     ghostty
     chromium
-    brave
   ];
 
   # https://search.nixos.org/options?query=programs.
