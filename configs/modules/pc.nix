@@ -41,7 +41,7 @@
     openjdk
     notepad-next
     tipp10
-    cura
+    cura-appimage
     vlc
     gimp-with-plugins
     musescore
