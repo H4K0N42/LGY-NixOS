@@ -36,12 +36,8 @@
   boot.loader = {
     efi.canTouchEfiVariables = true;
     timeout = 1;
-    grub = {
+    systemd-boot = {
       enable = true;
-      efiSupport = true;
-      device = "nodev"; # Use "nodev" when using EFI
-      backgroundColor = "#000000";
-      splashImage = null;
     };
   };
 
