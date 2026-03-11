@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   services.libinput.enable = true;
-  networking.wireless.enable = true;
+
   users = {
     users.schule = {
       isNormalUser = true;
