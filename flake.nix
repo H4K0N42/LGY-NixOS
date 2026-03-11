@@ -18,7 +18,7 @@
 
       segmentModules = {
         "PC" = [ ./git-config/configs/modules/pc.nix ];
-        "NOTE" = [ ./git-config/configs/modules/notebook.nix ];
+        "NOTE" = [ ./git-config/configs/modules/note.nix ];
       };
 
       modulesForHostname =
