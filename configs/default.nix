@@ -126,7 +126,7 @@
   systemd.services.H4BootScript = {
     description = "Startup Script";
     before = [ "display-manager.service" ];
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "display-manager.service" ];
 
     path = with pkgs; [
       rsync
