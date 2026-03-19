@@ -6,7 +6,7 @@
     users.schule = {
       isNormalUser = true;
       description = "Schule";
-      extraGroups = [ dialout ];
+      extraGroups = [ "dialout" ];
     };
   };
 
