@@ -125,6 +125,8 @@
 
   systemd.services.H4BootScript = {
     description = "Startup Script";
+
+    after = [ "local-fs.target" ];
     before = [ "display-manager.service" ];
     wantedBy = [ "display-manager.service" ];
 
@@ -136,7 +138,11 @@
 
     serviceConfig = {
       Type = "oneshot";
+      RemainAfterExit = true;
       ExecStart = "/etc/nixos/git-config/configs/scripts/boot/boot.sh";
     };
   };
+
+  systemd.services.display-manager.after = [ "H4BootScript.service" ];
+  systemd.services.display-manager.requires = [ "H4BootScript.service" ];
 }
