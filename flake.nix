@@ -1,12 +1,14 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
   outputs =
     {
       self,
       nixpkgs,
+      nix-flatpak,
       ...
     }@inputs:
     let
@@ -42,6 +44,7 @@
         inherit system;
         specialArgs = { inherit inputs hostname; };
         modules = [
+          nix-flatpak.nixosModules.nix-flatpak
           ./configuration.nix
           ./git-config/configs/default.nix
         ]

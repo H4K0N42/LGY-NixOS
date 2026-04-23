@@ -33,6 +33,17 @@
     firefox.enable = true;
   };
 
+  services.flatpak.enable = true;
+  services.flatpak.remotes = [
+    {
+      name = "flathub";
+      location = "https://dl.flathub.org/repo/flathub.flatpakrepo;";
+    }
+  ];
+  services.flatpak.packages = [
+    "edu.mit.Scratch"
+  ];
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     timeout = 1;
