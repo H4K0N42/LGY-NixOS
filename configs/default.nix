@@ -2,6 +2,7 @@
   config,
   pkgs,
   hostname,
+  inputs,
   ...
 }:
 {
@@ -43,6 +44,19 @@
   services.flatpak.packages = [
     "edu.mit.Scratch"
   ];
+
+  imports = [
+    inputs.veyon.nixosModules.default
+  ];
+  services.veyon = {
+    enable = true;
+    publicKey = {
+      name = "LGY-NixOS";
+      value = ''
+
+      '';
+    };
+  };
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -103,20 +117,15 @@
 
   console.keyMap = "de";
 
-  # # Sound with pipewire
-  # services.pulseaudio.enable = true;
-  # security.rtkit.enable = true;
-  # services.pipewire = {
-  #   enable = true;
-  #   alsa.enable = true;
-  #   alsa.support32Bit = true;
-  #   pulse.enable = true;
-  # };
-
-  # services.cron.enable = true;
-  # services.cron.systemCronJobs = [
-  #   "@reboot root bash /etc/nixos/git-config/configs/scripts/boot/boot.sh"
-  # ];
+  # Sound with pipewire
+  services.pulseaudio.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
   systemd.services.H4Update = {
     description = "Update NixOS";

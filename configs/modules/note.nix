@@ -2,11 +2,11 @@
 {
   services.libinput.enable = true;
   boot.kernelParams = [
-  "i8042.reset"
-  "i8042.nomux=1"
-  "i8042.nopnp=1"
-  "atkdb.reset"
-  "pnpacpi=off"
+    "i8042.reset"
+    "i8042.nomux=1"
+    "i8042.nopnp=1"
+    "atkdb.reset"
+    "pnpacpi=off"
   ];
 
   users = {
@@ -18,17 +18,14 @@
   };
 
   services = {
-    displayManager = {
-      sddm = {
-        enable = true;
-        wayland.enable = true;
-        autoLogin.relogin = true;
-        settings = {
-          Autologin = {
-            Session = "plasma.desktop";
-            User = "schule";
-          };
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "startplasma-x11";
+          user = "schule";
         };
+        default_session = initial_session;
       };
     };
     desktopManager.plasma6.enable = true;
