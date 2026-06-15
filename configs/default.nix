@@ -113,8 +113,6 @@
 
   console.keyMap = "de";
 
-  # Sound with pipewire
-  services.pulseaudio.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
