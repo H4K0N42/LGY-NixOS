@@ -2,7 +2,6 @@
   config,
   pkgs,
   hostname,
-  inputs,
   ...
 }:
 {
@@ -45,9 +44,6 @@
     "edu.mit.Scratch"
   ];
 
-  imports = [
-    inputs.veyon.nixosModules.default
-  ];
   services.veyon = {
     enable = true;
     publicKey = {

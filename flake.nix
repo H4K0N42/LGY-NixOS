@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    veyon.url = "github:veyon/veyon";
   };
 
   outputs =
@@ -9,6 +10,7 @@
       self,
       nixpkgs,
       nix-flatpak,
+      veyon,
       ...
     }@inputs:
     let
@@ -45,6 +47,7 @@
         specialArgs = { inherit inputs hostname; };
         modules = [
           nix-flatpak.nixosModules.nix-flatpak
+          veyon.nixosModules.default
           ./configuration.nix
           ./git-config/configs/default.nix
         ]
