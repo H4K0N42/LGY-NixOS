@@ -6,7 +6,7 @@ TARGET_DIR="/etc/nixos/git-config"
 
 cd $TARGET_DIR
 git fetch origin
-git reset --hard origin/main
+git reset --hard origin/dev
 git clean -fd
 
 
