@@ -18,14 +18,17 @@
   };
 
   services = {
-    greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "dbus-run-session startplasma-x11";
-          user = "schule";
+    displayManager = {
+      sddm = {
+        enable = true;
+        wayland.enable = false;
+        autoLogin.relogin = true;
+        settings = {
+          Autologin = {
+            Session = "plasma.desktop";
+            User = "schule";
+          };
         };
-        default_session = initial_session;
       };
     };
     desktopManager.plasma6.enable = true;
