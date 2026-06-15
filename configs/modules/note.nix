@@ -25,7 +25,7 @@
         autoLogin.relogin = true;
         settings = {
           Autologin = {
-            Session = "plasma.desktop";
+            Session = "plasmax11.desktop";
             User = "schule";
           };
         };
