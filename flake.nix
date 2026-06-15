@@ -1,8 +1,9 @@
 {
   inputs = {
+    self.submodules = true;
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    veyon.url = "github:veyon/veyon?submodules=1";
+    veyon.url = "github:veyon/veyon";
   };
 
   outputs =
