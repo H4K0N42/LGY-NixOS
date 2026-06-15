@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    veyon.url = "github:veyon/veyon";
+    # veyon.url = "github:veyon/veyon";
   };
 
   outputs =

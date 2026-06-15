@@ -45,19 +45,20 @@
     "edu.mit.Scratch"
   ];
 
-  imports = [
-    inputs.veyon.nixosModules.default
-  ];
+  services.xserver.enable = true;
+  # imports = [
+  #   inputs.veyon.nixosModules.default
+  # ];
 
-  services.veyon = {
-    enable = true;
-    publicKey = {
-      name = "LGY-NixOS";
-      value = ''
+  # services.veyon = {
+  #   enable = true;
+  #   publicKey = {
+  #     name = "LGY-NixOS";
+  #     value = ''
 
-      '';
-    };
-  };
+  #     '';
+  #   };
+  # };
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
