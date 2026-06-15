@@ -46,19 +46,20 @@
   ];
 
   services.xserver.enable = true;
-  # imports = [
-  #   inputs.veyon.nixosModules.default
-  # ];
 
-  # services.veyon = {
-  #   enable = true;
-  #   publicKey = {
-  #     name = "LGY-NixOS";
-  #     value = ''
+  imports = [
+    inputs.veyon.nixosModules.default
+  ];
 
-  #     '';
-  #   };
-  # };
+  services.veyon = {
+    enable = true;
+    publicKey = {
+      name = "LGY-NixOS";
+      value = ''
+
+      '';
+    };
+  };
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
