@@ -47,10 +47,6 @@
 
   services.xserver.enable = true;
 
-  imports = [
-    inputs.veyon.nixosModules.default
-  ];
-
   services.veyon = {
     enable = true;
     publicKey = {
