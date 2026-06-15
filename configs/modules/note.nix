@@ -22,7 +22,7 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "startplasma-x11";
+          command = "dbus-run-session startplasma-x11";
           user = "schule";
         };
         default_session = initial_session;
