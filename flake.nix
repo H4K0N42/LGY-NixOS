@@ -2,9 +2,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    veyon = fetchGit {
-      url = "https://github.com/veyon/veyon.git";
-      ref = "main";
+    veyon = {
+      url = "github:veyon/veyon";
       submodules = true;
     };
   };
