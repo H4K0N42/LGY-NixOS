@@ -2,6 +2,7 @@
   config,
   pkgs,
   hostname,
+  inputs,
   ...
 }:
 {
@@ -42,6 +43,10 @@
   ];
   services.flatpak.packages = [
     "edu.mit.Scratch"
+  ];
+
+  imports = [
+    inputs.veyon.nixosModules.default
   ];
 
   services.veyon = {

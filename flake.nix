@@ -10,7 +10,6 @@
       self,
       nixpkgs,
       nix-flatpak,
-      veyon,
       ...
     }@inputs:
     let
@@ -47,7 +46,6 @@
         specialArgs = { inherit inputs hostname; };
         modules = [
           nix-flatpak.nixosModules.nix-flatpak
-          veyon.nixosModules.default
           ./configuration.nix
           ./git-config/configs/default.nix
         ]
