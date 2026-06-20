@@ -2,11 +2,11 @@
 {
   services.libinput.enable = true;
   boot.kernelParams = [
-  "i8042.reset"
-  "i8042.nomux=1"
-  "i8042.nopnp=1"
-  "atkdb.reset"
-  "pnpacpi=off"
+    "i8042.reset"
+    "i8042.nomux=1"
+    "i8042.nopnp=1"
+    "atkdb.reset"
+    "pnpacpi=off"
   ];
 
   users = {
@@ -21,11 +21,11 @@
     displayManager = {
       sddm = {
         enable = true;
-        wayland.enable = true;
+        wayland.enable = false;
         autoLogin.relogin = true;
         settings = {
           Autologin = {
-            Session = "plasma.desktop";
+            Session = "plasmax11.desktop";
             User = "schule";
           };
         };
