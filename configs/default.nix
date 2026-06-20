@@ -145,7 +145,7 @@
       Type = "oneshot";
       ExecStart = [
         "/etc/nixos/git-config/configs/scripts/update.sh"
-        "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch"
+        "${pkgs.nixos-rebuild}/bin/nixos-rebuild boot"
       ];
       WorkingDirectory = "/etc/nixos/git-config";
       User = "root";
