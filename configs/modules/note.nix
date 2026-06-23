@@ -53,5 +53,6 @@
     gimp-with-plugins
     musescore
     geogebra
+    reaper
   ];
 }
