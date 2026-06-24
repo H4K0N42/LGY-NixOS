@@ -55,4 +55,6 @@
     geogebra
     reaper
   ];
+
+  networking.firewall.enable = false;
 }
