@@ -3,7 +3,7 @@
     self.submodules = true;
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    veyon.url = "git+https://github.com/H4K0N42/veyon.git?submodules=1"; # TODO: replace H4K0N42 with veyon when pull request is merged
+    veyon.url = "git+https://github.com/veyon/veyon.git?submodules=1";
   };
 
   outputs =
