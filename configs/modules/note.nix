@@ -57,4 +57,10 @@
   ];
 
   networking.firewall.enable = false;
+
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="power_supply", KERNEL=="CMB1", \
+      ATTR{charge_control_end_threshold}="80"
+  '';
+
 }
