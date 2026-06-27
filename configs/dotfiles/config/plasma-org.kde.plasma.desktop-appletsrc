@@ -17,7 +17,7 @@ plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
 [Containments][43][Wallpaper][org.kde.image][General]
-Image=file:///home/schule/Desktop/OXUPZKXYHFDYBEQTJGYOLGDRUA.jpg
+Image=file:///home/schule/.config/wallpaper.png
 SlidePaths=/nix/store/xcamp7y60hdpfppfa63952l6a93818l7-breeze-6.6.5/share/wallpapers/,/run/current-system/sw/share/wallpapers/
 
 [Containments][44]
