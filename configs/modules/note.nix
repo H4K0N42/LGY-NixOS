@@ -58,9 +58,15 @@
 
   networking.firewall.enable = false;
 
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="power_supply", KERNEL=="CMB1", \
-      ATTR{charge_control_end_threshold}="80"
-  '';
+  systemd.services.battery-charge-threshold = {
+    description = "Set battery charge threshold";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash -c 'echo 80 > /sys/class/power_supply/CMB1/charge_control_end_threshold'";
+      RemainAfterExit = true;
+    };
+  };
 
 }
