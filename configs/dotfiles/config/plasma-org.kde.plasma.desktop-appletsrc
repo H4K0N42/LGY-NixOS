@@ -38,7 +38,7 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][44][Applets][47][Configuration][General]
-launchers=preferred://filemanager,file:///nix/store/k1kgryabaqxhzi5ch1hswivhvx5didrr-system-path/share/applications/chromium-browser.desktop,file:///nix/store/k1kgryabaqxhzi5ch1hswivhvx5didrr-system-path/share/applications/firefox.desktop,file:///nix/store/k1kgryabaqxhzi5ch1hswivhvx5didrr-system-path/share/applications/onlyoffice-desktopeditors.desktop,file:///nix/store/k1kgryabaqxhzi5ch1hswivhvx5didrr-system-path/share/applications/codium.desktop
+launchers=preferred://filemanager,file:///nix/store/828nflkpw300plz3n4f6c3axfirkm6qn-chromium-149.0.7827.196/share/applications/chromium-browser.desktop,file:///nix/store/ji7anycqkrb269q0vd3qj8j63sky50bg-firefox-152.0.2/share/applications/firefox.desktop,file:///nix/store/g3gadnhx5cg1dnahbdcccpw677xy6y2n-onlyoffice-desktopeditors-9.1.0/share/applications/onlyoffice-desktopeditors.desktop,file:///nix/store/1s9pcvn8nrq6wg0g8r3rhpvks0zlxbkd-codium-1.116.02821/share/applications/codium.desktop
 
 [Containments][44][Applets][48]
 immutability=1
