@@ -56,6 +56,7 @@
     reaper
   ];
 
+  networking.wireless.enable = true;
   networking.firewall.enable = false;
 
   systemd.services.battery-charge-threshold = {
