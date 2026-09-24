@@ -3,8 +3,15 @@
   pkgs,
   hostname,
   inputs,
+  lib,
   ...
 }:
+let
+  # Local binary cache, see configs/modules/cache.nix
+  cacheUrl = "http://LGY-SRV-CACHE:5000";
+  # Private half lives only on the cache server in /var/lib/secrets/cache-priv-key.pem
+  cachePublicKey = "lgy-cache-1:1sLBTrq1ApjCjsnzTXHJnbEx009V5nJqixiMT9iZhi8=";
+in
 {
   # https://search.nixos.org/packages
   environment.systemPackages = with pkgs; [
@@ -75,6 +82,7 @@
     timeout = 1;
     systemd-boot = {
       enable = true;
+      configurationLimit = 5;
     };
   };
 
@@ -91,13 +99,19 @@
         "flakes"
       ];
       trusted-users = [ "root" ];
+
+      # Ask the local cache first, then cache.nixos.org; build locally only if both miss
+      substituters = lib.mkBefore [ cacheUrl ];
+      trusted-public-keys = [ cachePublicKey ];
+      connect-timeout = 5;
+      fallback = true;
     };
 
     gc = {
       automatic = true;
       dates = "daily";
       persistent = true;
-      options = "--keep 5";
+      options = "--delete-older-than 14d";
     };
 
     optimise = {

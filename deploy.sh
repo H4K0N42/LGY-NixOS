@@ -8,7 +8,7 @@ mkdir -p "$TARGET_DIR"
 git clone "$REPO_URL" "$TARGET_DIR"
 
 cp -f "$TARGET_DIR/flake.nix" "/etc/nixos/flake.nix"
-rm -f /etc/nixos/flake.lock
+cp -f "$TARGET_DIR/flake.lock" "/etc/nixos/flake.lock"
 
 read -rp "Hostname> " NEW_HOSTNAME
 

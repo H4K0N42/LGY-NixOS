@@ -26,6 +26,7 @@
       segmentModules = {
         "PC" = [ ./git-config/configs/modules/pc.nix ];
         "NOTE" = [ ./git-config/configs/modules/note.nix ];
+        "CACHE" = [ ./git-config/configs/modules/cache.nix ];
       };
 
       modulesForHostname =
