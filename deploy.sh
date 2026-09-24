@@ -6,6 +6,7 @@ CONFIG_FILE="/etc/nixos/configuration.nix"
 
 mkdir -p "$TARGET_DIR"
 git clone "$REPO_URL" "$TARGET_DIR"
+git -C "$TARGET_DIR" rev-parse HEAD > /etc/nixos/git-rev
 
 cp -f "$TARGET_DIR/flake.nix" "/etc/nixos/flake.nix"
 cp -f "$TARGET_DIR/flake.lock" "/etc/nixos/flake.lock"

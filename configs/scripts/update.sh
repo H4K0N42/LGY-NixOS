@@ -12,3 +12,4 @@ git clean -fd
 
 cp -f "$TARGET_DIR/flake.nix" "/etc/nixos/flake.nix"
 cp -f "$TARGET_DIR/flake.lock" "/etc/nixos/flake.lock"
+git rev-parse HEAD > /etc/nixos/git-rev

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   repoUrl = "https://github.com/H4K0N42/LGY-NixOS";
   workDir = "/var/lib/lgy-cache";
@@ -45,6 +45,7 @@ let
       cp -f ${workDir}/repo/flake.nix ${workDir}/repo/flake.lock "$ws/"
       cp -f ${stubConfiguration} "$ws/configuration.nix"
       echo "$variant" > "$ws/hostname"
+      echo "$rev" > "$ws/git-rev"
       # optional: a real hardware-configuration.nix from a client
       if [ -f ${workDir}/hardware/$variant.nix ]; then
         cp -f ${workDir}/hardware/$variant.nix "$ws/hardware-configuration.nix"
@@ -82,6 +83,26 @@ in
       ExecStart = buildScript;
     };
   };
+
+  systemd.services.lgy-cache-build.onSuccess = [ "lgy-cache-issue.service" ];
+
+  systemd.services.lgy-cache-issue = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      built=$(cut -c1-7 ${workDir}/last-built 2>/dev/null || echo "-------")
+      running=${lib.substring 0 7 (if config.system.configurationRevision != null then config.system.configurationRevision else "-------")}
+      mkdir -p /run/issue.d
+      printf '    Letzter Build: %s    System: %s\n\n' "$built" "$running" > /run/issue.d/lgy-cache.issue
+      ${pkgs.util-linux}/bin/agetty --reload || true
+    '';
+  };
+
+  programs.bash.loginShellInit = ''
+    if [ "$(id -u)" = 0 ] && [[ "$(tty)" == /dev/tty* ]]; then
+      journalctl -f -n 50 -u lgy-cache-build
+    fi
+  '';
 
   systemd.timers.lgy-cache-build = {
     wantedBy = [ "timers.target" ];

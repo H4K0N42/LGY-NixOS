@@ -22,11 +22,15 @@
       flakeDir = builtins.toString ./.;
       hostnameFile = flakeDir + "/hostname";
       hostname = nixpkgs.lib.trim (builtins.readFile hostnameFile);
+      gitRevFile = flakeDir + "/git-rev";
+      gitRev =
+        if builtins.pathExists gitRevFile then nixpkgs.lib.trim (builtins.readFile gitRevFile) else null;
 
       segmentModules = {
         "PC" = [ ./git-config/configs/modules/pc.nix ];
         "NOTE" = [ ./git-config/configs/modules/note.nix ];
         "CACHE" = [ ./git-config/configs/modules/cache.nix ];
+        "SRV" = [ ./git-config/configs/modules/srv.nix ];
       };
 
       modulesForHostname =
@@ -54,6 +58,7 @@
           inputs.veyon.nixosModules.default
           ./configuration.nix
           ./git-config/configs/default.nix
+          { system.configurationRevision = gitRev; }
         ]
         ++ modulesForHostname hostname;
       };
