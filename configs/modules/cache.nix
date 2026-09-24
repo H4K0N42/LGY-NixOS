@@ -93,7 +93,7 @@ in
       built=$(cut -c1-7 ${workDir}/last-built 2>/dev/null || echo "-------")
       running=${lib.substring 0 7 (if config.system.configurationRevision != null then config.system.configurationRevision else "-------")}
       mkdir -p /run/issue.d
-      printf '    Letzter Build: %s    System: %s\n\n' "$built" "$running" > /run/issue.d/lgy-cache.issue
+      printf 'Letzter Build: %s    System: %s\n\n' "$built" "$running" > /run/issue.d/lgy-cache.issue
       ${pkgs.util-linux}/bin/agetty --reload || true
     '';
   };
