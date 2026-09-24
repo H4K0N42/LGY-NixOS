@@ -102,6 +102,18 @@ in
   services.flatpak.enable = lib.mkForce false;
   services.xserver.enable = lib.mkForce false;
 
+  # The server is a notebook that is always plugged in
+  systemd.services.battery-charge-threshold = {
+    description = "Set battery charge threshold";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash -c 'for f in /sys/class/power_supply/*/charge_control_end_threshold; do echo 80 > $f; done'";
+      RemainAfterExit = true;
+    };
+  };
+
   nix.settings = {
     # Build packages in parallel; the server is the only machine that compiles
     max-jobs = "auto";
