@@ -5,7 +5,7 @@
     "i8042.reset"
     "i8042.nomux=1"
     "i8042.nopnp=1"
-    "atkdb.reset"
+    "atkbd.reset"
     "pnpacpi=off"
   ];
 

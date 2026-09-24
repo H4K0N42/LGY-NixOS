@@ -7,9 +7,7 @@
   ...
 }:
 let
-  # Local binary cache, see configs/modules/cache.nix
   cacheUrl = "http://LGY-SRV-CACHE:5000";
-  # Private half lives only on the cache server in /var/lib/secrets/cache-priv-key.pem
   cachePublicKey = "lgy-cache-1:1sLBTrq1ApjCjsnzTXHJnbEx009V5nJqixiMT9iZhi8=";
 in
 {
@@ -45,7 +43,7 @@ in
   services.flatpak.remotes = [
     {
       name = "flathub";
-      location = "https://dl.flathub.org/repo/flathub.flatpakrepo;";
+      location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
     }
   ];
   services.flatpak.packages = [
@@ -100,7 +98,6 @@ in
       ];
       trusted-users = [ "root" ];
 
-      # Ask the local cache first, then cache.nixos.org; build locally only if both miss
       substituters = lib.mkBefore [ cacheUrl ];
       trusted-public-keys = [ cachePublicKey ];
       connect-timeout = 5;

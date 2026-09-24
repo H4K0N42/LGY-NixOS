@@ -1,7 +1,6 @@
 name: Update flake.lock
 
-# All machines use the committed flake.lock, so this is what rolls out updates.
-# Runs Saturday night so the cache server has everything built before Monday.
+# Saturday, so the cache server is done building before Monday
 on:
   schedule:
     - cron: "0 22 * * 6"

@@ -37,7 +37,11 @@ EOF
 fi
 
 cd /etc/nixos
-nixos-rebuild boot --install-bootloader --flake .#"$NEW_HOSTNAME"
+nixos-rebuild boot --install-bootloader --flake .#"$NEW_HOSTNAME" \
+    --option extra-substituters "http://LGY-SRV-CACHE:5000" \
+    --option extra-trusted-public-keys "lgy-cache-1:1sLBTrq1ApjCjsnzTXHJnbEx009V5nJqixiMT9iZhi8=" \
+    --option connect-timeout 5 \
+    --option fallback true
 
 read
 
