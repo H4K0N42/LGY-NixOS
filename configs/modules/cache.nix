@@ -65,6 +65,7 @@ in
   services.harmonia.cache = {
     enable = true;
     signKeyPaths = [ "${keyDir}/cache-priv-key.pem" ];
+    settings.priority = 10;
   };
   networking.firewall.allowedTCPPorts = [ 5000 ];
 
