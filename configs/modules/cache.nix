@@ -68,6 +68,20 @@ in
   };
   networking.firewall.allowedTCPPorts = [ 5000 ];
 
+  # fixed address, clients reach the cache by this IP (see cacheUrl in configs/default.nix)
+  networking.useDHCP = false;
+  networking.interfaces.enp0s31f6.ipv4.addresses = [
+    {
+      address = "172.22.0.215";
+      prefixLength = 20;
+    }
+  ];
+  networking.defaultGateway = {
+    address = "172.22.0.1";
+    interface = "enp0s31f6";
+  };
+  networking.nameservers = [ "172.22.0.1" ];
+
   systemd.services.lgy-cache-build = {
     description = "Build all client configurations for the binary cache";
     after = [ "network-online.target" ];

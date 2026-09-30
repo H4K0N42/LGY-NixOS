@@ -7,7 +7,7 @@
   ...
 }:
 let
-  cacheUrl = "http://LGY-SRV-CACHE:5000";
+  cacheUrl = "http://172.22.0.215:5000";
   cachePublicKey = "lgy-cache-1:1sLBTrq1ApjCjsnzTXHJnbEx009V5nJqixiMT9iZhi8=";
 in
 {
