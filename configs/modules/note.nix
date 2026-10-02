@@ -13,7 +13,7 @@
     users.schule = {
       isNormalUser = true;
       description = "Schule";
-      extraGroups = [ "dialout" ];
+      extraGroups = [ "dialout" "networkmanager" ];
     };
   };
 
@@ -56,7 +56,7 @@
     reaper
   ];
 
-  networking.wireless.enable = true;
+  networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
   systemd.services.battery-charge-threshold = {
