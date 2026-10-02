@@ -13,6 +13,7 @@
     users.schule = {
       isNormalUser = true;
       description = "Schule";
+      hashedPassword = "$y$jCT$llj4TvWDlPFGDYFU8Tekn1$.6.Ma2mkwcW8lsBMxXMsPMKT0oThbUfE8TmisqsnI43";
       extraGroups = [ "dialout" "networkmanager" ];
     };
   };

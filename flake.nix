@@ -31,6 +31,7 @@
         "NOTE" = [ ./git-config/configs/modules/note.nix ];
         "CACHE" = [ ./git-config/configs/modules/cache.nix ];
         "SRV" = [ ./git-config/configs/modules/srv.nix ];
+        "L" = [ ./git-config/configs/modules/lehrer.nix ];
       };
 
       modulesForHostname =
